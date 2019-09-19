@@ -7,10 +7,12 @@ IO.puts("Deleting all existing items ...")
 
 Repo.delete_all(Item)
 
-IO.puts("Creating 5,000 new items ...")
+count = 5000
+
+IO.puts("Creating #{count} new items ...")
 
 item_ids =
-  Enum.map(1..5000, fn _ ->
+  Enum.map(1..count, fn _ ->
     random = :rand.uniform(100_000_000_000_000)
 
     {:ok, %{id: id}} =

@@ -7,8 +7,10 @@ Repo.delete_all(Item)
 
 IO.puts("Creating 5,000 new items ...")
 
+count = 5000
+
 item_ids =
-  Enum.map(1..5000, fn _ ->
+  Enum.map(1..count, fn _ ->
     random = :rand.uniform(100_000_000_000_000)
 
     {:ok, %{id: id}} =
@@ -20,6 +22,10 @@ item_ids =
 
     id
   end)
+
+first_item_id = List.first(item_ids)
+last_item_id = first_item_id + count - 1
+^last_item_id = List.last(item_ids)
 
 IO.puts("Starting test ...")
 
